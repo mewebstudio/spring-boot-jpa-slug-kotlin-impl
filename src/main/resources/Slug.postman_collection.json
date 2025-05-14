@@ -1,0 +1,210 @@
+{
+	"info": {
+		"_postman_id": "ae447439-48f6-46ac-8799-9a87f3181414",
+		"name": "Slug",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2079870",
+		"_collection_link": "https://lunar-capsule-667882.postman.co/workspace/Team-Workspace~4a00e7a1-03fc-466b-82c8-45cf6f1cd4c6/collection/2079870-ae447439-48f6-46ac-8799-9a87f3181414?action=share&source=collection_link&creator=2079870"
+	},
+	"item": [
+		{
+			"name": "List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200)",
+							"",
+							"    const response = pm.response.json()",
+							"    pm.collectionVariables.set(\"categoryId\", response[0].id);",
+							"",
+							"    if (response.length > 1) {",
+							"        response.forEach((item, index) => {",
+							"            if (index !== 0) {",
+							"                pm.collectionVariables.set(`categoryId${index + 1}`, item.id);",
+							"            }",
+							"        });",
+							"    }",
+							"})",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base}}/categories",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201)",
+							"",
+							"    const response = pm.response.json()",
+							"    pm.collectionVariables.set(\"categoryId\", response.id)",
+							"})",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Home Decoration\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}/categories",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base}}/categories/{{categoryId}}",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"categories",
+						"{{categoryId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Home Decoration\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base}}/categories/{{categoryId}}",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"categories",
+						"{{categoryId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base}}/categories/{{categoryId}}",
+					"host": [
+						"{{base}}"
+					],
+					"path": [
+						"categories",
+						"{{categoryId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "categoryId",
+			"value": ""
+		},
+		{
+			"key": "categoryId2",
+			"value": ""
+		},
+		{
+			"key": "categoryId3",
+			"value": ""
+		},
+		{
+			"key": "categoryId4",
+			"value": ""
+		},
+		{
+			"key": "categoryId5",
+			"value": ""
+		}
+	]
+}
