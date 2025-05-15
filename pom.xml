@@ -31,7 +31,7 @@
         <kotlin.version>1.9.25</kotlin.version>
         <ulid-creator.version>5.2.3</ulid-creator.version>
         <slugify.version>3.0.7</slugify.version>
-        <spring-boot-jpa-slug-kotlin.version>0.1.1</spring-boot-jpa-slug-kotlin.version>
+        <spring-boot-jpa-slug-kotlin.version>0.1.2</spring-boot-jpa-slug-kotlin.version>
     </properties>
     <dependencies>
         <dependency>
