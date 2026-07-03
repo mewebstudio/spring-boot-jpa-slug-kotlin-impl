@@ -1,0 +1,10 @@
+{
+  "properties": [
+    {
+      "name": "springdoc.scalar.path",
+      "type": "java.lang.String",
+      "description": "Path of the Scalar UI (e.g. /scalar).",
+      "defaultValue": "/scalar-ui"
+    }
+  ]
+}

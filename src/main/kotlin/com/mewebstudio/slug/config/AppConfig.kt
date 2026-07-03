@@ -19,7 +19,7 @@ class AppConfig {
         objectMapper.enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
         objectMapper.registerModule(JavaTimeModule())
         objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
-        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL)
+        objectMapper.setDefaultPropertyInclusion(JsonInclude.Include.NON_NULL)
         objectMapper.propertyNamingStrategy = PropertyNamingStrategies.LOWER_CAMEL_CASE
 
         JsonMapper.builder()

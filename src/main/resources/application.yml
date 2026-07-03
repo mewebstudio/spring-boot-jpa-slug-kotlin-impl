@@ -27,6 +27,12 @@ spring:
     password: ${POSTGRESQL_PASSWORD:secret}
 
 
+springdoc:
+  api-docs:
+    path: /api-docs
+  scalar:
+    path: /scalar
+
 management:
   endpoints:
     web:

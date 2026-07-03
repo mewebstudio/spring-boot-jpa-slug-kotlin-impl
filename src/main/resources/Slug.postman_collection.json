@@ -8,154 +8,310 @@
 	},
 	"item": [
 		{
-			"name": "List",
-			"event": [
+			"name": "Categories",
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200)",
-							"",
-							"    const response = pm.response.json()",
-							"    pm.collectionVariables.set(\"categoryId\", response[0].id);",
-							"",
-							"    if (response.length > 1) {",
-							"        response.forEach((item, index) => {",
-							"            if (index !== 0) {",
-							"                pm.collectionVariables.set(`categoryId${index + 1}`, item.id);",
-							"            }",
-							"        });",
-							"    }",
-							"})",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{base}}/categories",
-					"host": [
-						"{{base}}"
+					"name": "List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200)",
+									"",
+									"    const response = pm.response.json()",
+									"    if (response.length > 0) {",
+									"        pm.collectionVariables.set(\"categoryId\", response[0].id);",
+									"    }",
+									"",
+									"    if (response.length > 1) {",
+									"        response.forEach((item, index) => {",
+									"            if (index !== 0) {",
+									"                pm.collectionVariables.set(`categoryId${index + 1}`, item.id);",
+									"            }",
+									"        });",
+									"    }",
+									"})",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
 					],
-					"path": [
-						"categories"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create",
-			"event": [
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/categories",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 201\", function () {",
-							"    pm.response.to.have.status(201)",
-							"",
-							"    const response = pm.response.json()",
-							"    pm.collectionVariables.set(\"categoryId\", response.id)",
-							"})",
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"name\": \"Home Decoration\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201)",
+									"",
+									"    const response = pm.response.json()",
+									"    pm.collectionVariables.set(\"categoryId\", response.id)",
+									"})",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
 						}
-					}
-				},
-				"url": {
-					"raw": "{{base}}/categories",
-					"host": [
-						"{{base}}"
 					],
-					"path": [
-						"categories"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Show",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{base}}/categories/{{categoryId}}",
-					"host": [
-						"{{base}}"
-					],
-					"path": [
-						"categories",
-						"{{categoryId}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update",
-			"request": {
-				"method": "PATCH",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"name\": \"Home Decoration\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Technology\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/categories",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"categories"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{base}}/categories/{{categoryId}}",
-					"host": [
-						"{{base}}"
-					],
-					"path": [
-						"categories",
-						"{{categoryId}}"
-					]
+				{
+					"name": "Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/categories/{{categoryId}}",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"categories",
+								"{{categoryId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Science\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/categories/{{categoryId}}",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"categories",
+								"{{categoryId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/categories/{{categoryId}}",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"categories",
+								"{{categoryId}}"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Delete",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{base}}/categories/{{categoryId}}",
-					"host": [
-						"{{base}}"
+			"name": "Products",
+			"item": [
+				{
+					"name": "List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200)",
+									"",
+									"    const response = pm.response.json()",
+									"    if (response.length > 0) {",
+									"        pm.collectionVariables.set(\"productId\", response[0].id);",
+									"    }",
+									"})",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
 					],
-					"path": [
-						"categories",
-						"{{categoryId}}"
-					]
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/products",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201)",
+									"",
+									"    const response = pm.response.json()",
+									"    pm.collectionVariables.set(\"productId\", response.id)",
+									"})",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"categoryId\": \"{{categoryId}}\",\n    \"title\": \"AI News\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/products",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/products/{{productId}}",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"products",
+								"{{productId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Machine Learning Basics\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/products/{{productId}}",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"products",
+								"{{productId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/products/{{productId}}",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"products",
+								"{{productId}}"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	],
 	"event": [
@@ -204,6 +360,10 @@
 		},
 		{
 			"key": "categoryId5",
+			"value": ""
+		},
+		{
+			"key": "productId",
 			"value": ""
 		}
 	]

@@ -10,4 +10,12 @@ docker-compose up --build -d
 ```
 
 ### Postman collection
-- [Postman Collection](https://github.com/mewebstudio/spring-boot-jpa-slug-java-impl/blob/main/src/main/resources/Slug.postman_collection.json)
+- [Postman Collection](https://github.com/mewebstudio/spring-boot-jpa-slug-kotlin-impl/blob/main/src/main/resources/Slug.postman_collection.json)
+
+### API Documentation
+Once the application is running, the API documentation is available at:
+
+| UI | URL |
+|---|---|
+| Scalar UI | http://localhost:8080/scalar |
+| OpenAPI JSON | http://localhost:8080/api-docs |
